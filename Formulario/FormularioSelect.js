@@ -1,5 +1,4 @@
 const inputs = document.querySelectorAll(".input");
-const selectInput = document.querySelector(".select-municipio")
 
 function focusFunc(){
     let parent = this.parentNode;
@@ -17,7 +16,34 @@ inputs.forEach(input => {
     input.addEventListener("blur",blurFunc);
 })
 
+/*
+* Seccion de Select
+*/
+const selectInput = document.querySelector(".select-municipio")
+//const selectElements = document.querySelectorAll(".select-options .element")
+const selectElements = document.querySelector(".select-options")
+let selection = false
+
 selectInput.addEventListener("click", () => {
-    selectInput.children[0].classList.toggle("toggled")
+    selectInput.classList.toggle("focused")
+    if (!selection){
+        selectInput.classList.toggle("focus")
+        if ( Array.from(selectInput.classList).indexOf("focus") != -1 ){
+            selectInput.children[1].innerText = "Selecciona un Municipio"
+        } else {
+            selectInput.children[1].innerText = ""
+        }
+    }
+})
+
+selectElements.addEventListener("click", (e) => {
+    if (e.target.className === "element"){
+        let trueField = selectInput.children[0]
+        let fakeField = selectInput.children[1]
+        trueField.value = e.target.ariaValueText
+        fakeField.innerText = e.target.innerText
+        selection = true
+        selectInput.classList.toggle("focused")
+    }
 })
 
