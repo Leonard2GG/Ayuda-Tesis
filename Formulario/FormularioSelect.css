@@ -351,17 +351,40 @@ textarea.input{
 }
 
 .select-options {
+    display: none;
+    padding: 10px;
+    border: solid 2px #fff;
+    color: #fff;
+    border-top: none;
+    border-radius: 0 0 25px 25px;
+    transform: translateY(-18px);
+    transition-duration: 2s;
+}
+
+.input-container.select-municipio.focused ~ .select-options {
     display: flex;
     flex-direction: column;
-    border: solid 2px;
 }
 
 .element {
-    padding: 5px 20px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: .6rem;
 }
 
 .element:hover {
     background: gray;
     color: white;
     
+}
+
+.input.selector {
+    height: 3rem;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+.input-container.select-municipio.focused .input.selector {
+    border-bottom: none;
+    border-radius: 25px 25px 0 0;
 }
